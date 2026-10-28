@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DG Cửa Hàng</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DG Cửa Hàng">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="robots" content="noindex, nofollow">
+<style>
+html,body{margin:0;height:100%;background:#FFFFFF;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#cho{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#FFFFFF;color:#1C1714}
+#cho img{width:84px;height:84px;border-radius:20px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+#cho .t{font-size:15px;font-weight:600;letter-spacing:.02em} #cho .s{font-size:12.5px;opacity:.65;max-width:280px;text-align:center;line-height:1.5}
+#cho .v{width:120px;height:2px;background:rgba(127,127,127,.25);border-radius:2px;overflow:hidden} #cho .v i{display:block;width:40%;height:100%;background:#E18A24;animation:ch 1.1s ease-in-out infinite}
+@keyframes ch{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+#cho button{display:none;border:1px solid currentColor;background:transparent;color:inherit;border-radius:10px;padding:8px 16px;font:inherit;font-size:13px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="cho"><img src="/icon-192.png" alt=""><div class="t">DG Cửa Hàng</div><div class="v"><i></i></div><div class="s" id="cho_s">Đang mở…</div><button id="cho_lai" onclick="location.reload()">Thử lại</button></div>
+<script>
+(function () {
+  var VO = "https://script.google.com/macros/s/AKfycbyeMQYi39QfJeY4LMD4h122GgWj0iqHsJ572NWwK_59RJ1PqgVDmrJM5H3cOYDaykXl/exec?vo=1", API = "https://script.google.com/macros/s/AKfycbyeMQYi39QfJeY4LMD4h122GgWj0iqHsJ572NWwK_59RJ1PqgVDmrJM5H3cOYDaykXl/exec", TEN = "DG Cửa Hàng";
+  var HEAD = "<meta name=\"theme-color\" content=\"#FFFFFF\">\n<link rel=\"manifest\" href=\"/manifest.webmanifest\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32.png\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"64x64\" href=\"/favicon-64.png\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n<meta name=\"mobile-web-app-capable\" content=\"yes\">\n<meta name=\"apple-mobile-web-app-title\" content=\"DG Cửa Hàng\">\n<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">\n<meta name=\"robots\" content=\"noindex, nofollow\">", CUOI = "<!-- ===== DG Đặt Hàng · gợi ý cài app (chỉ có ở bản tên miền) ===== -->\n<style>\n#dgcai{position:fixed;left:12px;right:12px;bottom:16px;z-index:60;max-width:440px;margin:0 auto;background:#1C1714;color:#F5F0E6;border-radius:16px;padding:14px 14px 14px 16px;box-shadow:0 14px 40px rgba(28,23,20,.28);display:none;gap:12px;align-items:center;font-size:13.5px;line-height:1.4}\n#dgcai.on{display:flex} #dgcai img{width:42px;height:42px;border-radius:10px;flex:none;background:#fff}\n#dgcai b{display:block;font-size:14px;color:#fff;margin-bottom:2px} #dgcai .t{flex:1;min-width:0}\n#dgcai .k{display:flex;flex-direction:column;gap:6px;flex:none}\n#dgcai button{border:0;border-radius:10px;padding:8px 12px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}\n#dgcai .c1{background:#F5F0E6;color:#1C1714} #dgcai .c2{background:transparent;color:#B8AFA4;padding:4px 6px;font-weight:500}\n#dgcai .ios{display:inline-block;vertical-align:-3px;width:16px;height:16px}\n@media(max-width:860px){#dgcai{bottom:calc(74px + env(safe-area-inset-bottom))}}\n<\/style>\n<div id=\"dgcai\" role=\"dialog\" aria-live=\"polite\"><\/div>\n<script>\n(function () {\n  var box = document.getElementById('dgcai'), hoan = null;\n  var ua = navigator.userAgent || '';\n  var daCai = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;\n  if ('serviceWorker' in navigator) window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () { }); });\n  if (daCai) return;\n  function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }\n  var tre = +ls('dgcai_tre') || 0; if (Date.now() < tre) return;\n  var trongApp = /Zalo|FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\\//i.test(ua);\n  var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);\n  var iosSafari = ios && /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua) && !trongApp;\n  var SHARE = '<svg class=\"ios\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3v12M8 7l4-4 4 4\"/><path d=\"M6 11v8.5c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5V11\"/><\/svg>';\n  function en() { return (document.documentElement.lang || '') === 'en'; }\n  function ve(kieu) {\n    var E = en(), t, nut = '';\n    if (kieu === 'zalo') t = E ? '<b>Install DG Cửa Hàng<\/b>Open this page in ' + (ios ? 'Safari' : 'Chrome') + ': tap ⋯ → “Open in browser”.' : '<b>Cài app DG Cửa Hàng<\/b>Mở trang này bằng ' + (ios ? 'Safari' : 'Chrome') + ': bấm ⋯ → “Mở bằng trình duyệt”.',\n      nut = '<button class=\"c1\" data-a=\"chep\">' + (E ? 'Copy link' : 'Chép link') + '<\/button>';\n    else if (kieu === 'ios') t = E ? '<b>Add to Home Screen<\/b>Tap ' + SHARE + ' Share → “Add to Home Screen”.' : '<b>Cài app vào màn hình chính<\/b>Bấm ' + SHARE + ' Chia sẻ → “Thêm vào MH chính”.';\n    else t = E ? '<b>Install DG Cửa Hàng<\/b>One tap — opens like an app, no store needed.' : '<b>Cài app DG Cửa Hàng<\/b>Một chạm — mở như ứng dụng, không cần kho ứng dụng.',\n      nut = '<button class=\"c1\" data-a=\"cai\">' + (E ? 'Install' : 'Cài app') + '<\/button>';\n    box.innerHTML = '<img src=\"/icon-192.png\" alt=\"\"><div class=\"t\">' + t + '<\/div><div class=\"k\">' + nut + '<button class=\"c2\" data-a=\"sau\">' + (E ? 'Later' : 'Để sau') + '<\/button><\/div>';\n    box.dataset.k = kieu; box.classList.add('on');\n  }\n  box.addEventListener('click', function (e) {\n    var a = e.target.closest('button'); if (!a) return; a = a.dataset.a;\n    if (a === 'sau') { ls('dgcai_tre', String(Date.now() + 7 * 864e5)); box.classList.remove('on'); }\n    if (a === 'cai' && hoan) { hoan.prompt(); hoan.userChoice.then(function () { hoan = null; box.classList.remove('on'); }); }\n    if (a === 'chep') { var u = location.origin + '/'; (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { e.target.textContent = en() ? 'Copied ✓' : 'Đã chép ✓'; }).catch(function () { prompt('Link', u); }); }\n  });\n  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); hoan = e; setTimeout(function () { ve('cai'); }, 2500); });\n  window.addEventListener('appinstalled', function () { box.classList.remove('on'); });\n  if (trongApp) setTimeout(function () { ve('zalo'); }, 2500);\n  else if (iosSafari) setTimeout(function () { ve('ios'); }, 4000);\n  new MutationObserver(function () { if (box.classList.contains('on')) ve(box.dataset.k); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });\n})();\n<\/script>\n";
+  function loi(t) { document.getElementById('cho_s').textContent = t; document.getElementById('cho_lai').style.display = 'inline-block'; document.querySelector('#cho .v').style.display = 'none'; }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () { });
+  if (!navigator.onLine) return loi('Không có mạng — kiểm tra kết nối rồi bấm Thử lại.');
+  var cham = setTimeout(function () { document.getElementById('cho_s').textContent = 'Mạng chậm — vẫn đang mở, chờ thêm chút…'; }, 12000);
+  fetch(VO, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }).then(function (h) {
+    clearTimeout(cham);
+    if (!/<html|<div/i.test(h)) throw new Error('nội dung lạ');
+    var dau = '<script>window.DG_API=' + JSON.stringify(API) + ';<\/script>' + HEAD;
+    h = /<head[^>]*>/i.test(h) ? h.replace(/<head[^>]*>/i, function (m) { return m + dau; }) : dau + h;
+    h = h.replace(/<title>[^<]*<\/title>/i, '<title>' + TEN + '</title>');
+    h = /<\/body>/i.test(h) ? h.replace(/<\/body>(?![\s\S]*<\/body>)/i, CUOI + '</body>') : h + CUOI;
+    document.open(); document.write(h); document.close();
+  }).catch(function (e) { clearTimeout(cham); loi('Chưa mở được ứng dụng (' + (e.message || 'lỗi mạng') + '). Bấm Thử lại.'); });
+})();
+</script>
+</body>
+</html>
