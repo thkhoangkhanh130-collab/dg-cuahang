@@ -41,7 +41,7 @@ html,body{margin:0;height:100%;background:#FFFFFF;font-family:system-ui,-apple-s
     h = /<head[^>]*>/i.test(h) ? h.replace(/<head[^>]*>/i, function (m) { return m + dau; }) : dau + h;
     h = h.replace(/<title>[^<]*<\/title>/i, '<title>' + TEN + '</title>');
     h = /<\/body>/i.test(h) ? h.replace(/<\/body>(?![\s\S]*<\/body>)/i, CUOI + '</body>') : h + CUOI;
-    document.open(); document.write(h); document.close();
+    document.open(); document.write(h); document.close(); try { if (!document.title) document.title = TEN; } catch (e) { }
   }).catch(function (e) { clearTimeout(cham); loi('Chưa mở được ứng dụng (' + (e.message || 'lỗi mạng') + '). Bấm Thử lại.'); });
 })();
 </script>
